@@ -7,7 +7,7 @@ These rules apply to `src/server/` in addition to the repository guidelines. Thi
 - Keep each product domain under its owning server module.
 - Keep domain rules in `domain/`, use-case coordination in `services/`, and data access in `repositories/`.
 - A service may use a repository directly for a read-only projection when constructing a domain entity is unnecessary. State-changing operations must pass through the domain rules they affect.
-- Keep shared server mechanics such as configuration, errors, logging, and request context under `platform/`.
+- Keep shared server mechanics such as configuration, database access, errors, logging, and request context under `platform/`.
 - Keep provider-specific code behind explicit interfaces and do not let provider response shapes become domain types.
 - Do not import browser components, client state, or client configuration into server modules.
 

@@ -1,0 +1,21 @@
+services:
+    postgres:
+        image: postgres:19-alpine
+        environment:
+            DATABASE_PASSWORD: ${DATABASE_PASSWORD:-change-me}
+            POSTGRES_DB: ${DATABASE_NAME:-turing_tank}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-owner}
+            POSTGRES_USER: turing_owner
+        healthcheck:
+            test: ['CMD-SHELL', 'pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB']
+            interval: 5s
+            timeout: 5s
+            retries: 10
+        ports:
+            - '${DATABASE_PORT:-5432}:5432'
+        volumes:
+            - turing_tank_postgres_data:/var/lib/postgresql/data
+            - ./infra/database/bootstrap/bootstrap-roles.sh:/docker-entrypoint-initdb.d/bootstrap-roles.sh:ro
+
+volumes:
+    turing_tank_postgres_data:

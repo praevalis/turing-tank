@@ -15,10 +15,15 @@
         "format": "prettier . --write",
         "format:check": "prettier . --check",
         "test": "vitest run",
-        "test:watch": "vitest"
+        "test:watch": "vitest",
+        "db:up": "docker compose up -d",
+        "db:down": "docker compose down",
+        "db:migrate": "tsx scripts/database/migrate.ts"
     },
     "dependencies": {
+        "kysely": "^0.29.9",
         "next": "^16.2.0",
+        "pg": "^8.23.1",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "zod": "^4.6.7"
@@ -26,6 +31,7 @@
     "devDependencies": {
         "@tailwindcss/postcss": "^4.1.0",
         "@types/node": "^24.0.0",
+        "@types/pg": "^8.23.1",
         "@types/react": "^19.2.0",
         "@types/react-dom": "^19.2.0",
         "eslint": "^9.39.5",
@@ -33,6 +39,7 @@
         "eslint-plugin-import": "^2.31.0",
         "prettier": "^3.6.0",
         "tailwindcss": "^4.1.0",
+        "tsx": "^4.23.15",
         "typescript": "^5.9.3",
         "vitest": "^5.1.1"
     }
