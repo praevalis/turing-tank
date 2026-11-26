@@ -18,7 +18,7 @@ A work package is a major chunk of effort. A slice is a small, independently rev
 - [x] WP1.3 Establish PostgreSQL, migration roles, local services, SQL migrations, Kysely access, and database guidance.
 - [x] WP1.4 Establish shared UI tokens, typography, layout primitives, and accessibility conventions.
 - [x] WP1.5 Establish public and protected route-group layouts, route composition, and shared navigation.
-- [ ] WP1.6 Build the public landing page with product positioning and sign-up/sign-in entry points.
+- [x] WP1.6 Build the public landing page with product positioning and without assuming navigation behavior.
 
 ## WP2: Identity, Persistence, and Domain Foundation
 
