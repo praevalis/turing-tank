@@ -15,7 +15,10 @@ A work package is a major chunk of effort. A slice is a small, independently rev
 
 - [x] WP1.1 Establish the Next.js repository shell, pnpm toolchain, strict TypeScript, formatting, linting, and testing baseline.
 - [x] WP1.2 Establish client/server boundaries, runtime configuration, stable errors, structured logging, and approved nested agent guidance.
-- [ ] WP1.3 Establish PostgreSQL, migration roles, local services, SQL migrations, Kysely access, and database guidance.
+- [x] WP1.3 Establish PostgreSQL, migration roles, local services, SQL migrations, Kysely access, and database guidance.
+- [x] WP1.4 Establish shared UI tokens, typography, layout primitives, and accessibility conventions.
+- [ ] WP1.5 Establish public and authenticated application shells, route composition, navigation, and shared loading/error states.
+- [ ] WP1.6 Build the public landing page with product positioning and sign-up/sign-in entry points.
 
 ## Later Work Packages
 

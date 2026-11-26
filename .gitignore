@@ -25,5 +25,6 @@ blob-report/
 .vercel/
 *.pem
 
+.vscode/
 .DS_Store
 Thumbs.db

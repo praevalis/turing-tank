@@ -15,6 +15,7 @@ Read the repository-root `AGENTS.md` and this index before making changes that a
 - [Project context](context/project-context.md)
 - [Architecture](context/architecture.md)
 - [Data model](context/data-model.md)
+- [Design system](context/design-system.md)
 
 ## Accepted Architecture Decisions
 
