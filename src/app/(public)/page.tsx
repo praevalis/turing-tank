@@ -1,6 +1,6 @@
 export default function HomePage() {
     return (
-        <main className="public-page-container flex min-h-screen items-center justify-center">
+        <main className="public-page-container flex min-h-[calc(100vh-4.5rem)] items-center justify-center md:min-h-[calc(100vh-5.75rem)]">
             <section className="max-w-2xl space-y-4 text-center">
                 <p className="text-ink-muted text-sm font-medium uppercase tracking-[0.3em]">
                     Turing Tank

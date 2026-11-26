@@ -17,14 +17,20 @@ A work package is a major chunk of effort. A slice is a small, independently rev
 - [x] WP1.2 Establish client/server boundaries, runtime configuration, stable errors, structured logging, and approved nested agent guidance.
 - [x] WP1.3 Establish PostgreSQL, migration roles, local services, SQL migrations, Kysely access, and database guidance.
 - [x] WP1.4 Establish shared UI tokens, typography, layout primitives, and accessibility conventions.
-- [ ] WP1.5 Establish public and authenticated application shells, route composition, navigation, and shared loading/error states.
+- [x] WP1.5 Establish public and protected route-group layouts, route composition, and shared navigation.
 - [ ] WP1.6 Build the public landing page with product positioning and sign-up/sign-in entry points.
+
+## WP2: Identity, Persistence, and Domain Foundation
+
+- [ ] WP2.1 Establish user accounts, password authentication, session handling, and minimal sign-up/sign-in UI while keeping provider credentials extensible.
+- [ ] WP2.2 Establish typed Kysely database types, repository boundaries, transaction handling, and persistence integration tests.
+- [ ] WP2.3 Establish authenticated database context, runtime-role security, and migration-owned RLS verification for user-owned records.
+- [ ] WP2.4 Establish domain identifiers, errors, lifecycle validation, optimistic concurrency, and idempotent mutation safety.
 
 ## Later Work Packages
 
 The following work packages define the implementation scope. Their slices will be added when each package is prepared for execution.
 
-- WP2: Identity, persistence, and domain foundation.
 - WP3: Pitch intake, assets, and claims.
 - WP4: Research and evidence.
 - WP5: Investor definitions and agent capabilities.
