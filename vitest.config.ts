@@ -6,11 +6,12 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@scripts': fileURLToPath(new URL('./scripts', import.meta.url)),
         },
     },
     test: {
         environment: 'node',
-        include: ['src/**/*.test.ts'],
+        include: ['tests/unit/**/*.test.ts'],
         passWithNoTests: true,
     },
 });

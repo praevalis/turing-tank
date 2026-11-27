@@ -22,10 +22,11 @@ A work package is a major chunk of effort. A slice is a small, independently rev
 
 ## WP2: Identity, Persistence, and Domain Foundation
 
-- [ ] WP2.1 Establish user accounts, password authentication, session handling, and minimal sign-up/sign-in UI while keeping provider credentials extensible.
-- [ ] WP2.2 Establish typed Kysely database types, repository boundaries, transaction handling, and persistence integration tests.
+- [ ] WP2.1 Establish typed Kysely database types, repository boundaries, transaction handling, and persistence integration tests.
+- [ ] WP2.2 Establish user accounts, password authentication, session handling, and an extensible credential model without provider adapters.
 - [ ] WP2.3 Establish authenticated database context, runtime-role security, and migration-owned RLS verification for user-owned records.
 - [ ] WP2.4 Establish domain identifiers, errors, lifecycle validation, optimistic concurrency, and idempotent mutation safety.
+- [ ] WP2.5 Build sign-up, sign-in, sign-out, and session-expiry UI against the completed authentication backend flows.
 
 ## Later Work Packages
 
