@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server';
+
 import { TuringError, type TuringErrorKind } from '@/server/platform/errors';
 
 type HttpStatus = 400 | 401 | 403 | 404 | 409 | 422 | 500;
@@ -30,7 +32,7 @@ export interface ErrorResponse {
  * @param requestId Optional identifier associated with the request.
  * @returns An HTTP status and safe response body.
  */
-export function toErrorResponse(error: unknown, requestId?: string): ErrorResponse {
+function mapError(error: unknown, requestId?: string): ErrorResponse {
     if (error instanceof TuringError) {
         return {
             status: statusByErrorKind[error.kind],
@@ -54,4 +56,18 @@ export function toErrorResponse(error: unknown, requestId?: string): ErrorRespon
             },
         },
     };
+}
+
+/**
+ * Converts an application failure into a JSON API response.
+ *
+ * @param error Failure raised by application code or an external dependency.
+ * @returns A JSON response containing the stable error body and HTTP status.
+ */
+export function createErrorResponse(error: unknown): Response {
+    const response = mapError(error);
+
+    return NextResponse.json(response.body, {
+        status: response.status,
+    });
 }

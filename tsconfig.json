@@ -23,7 +23,8 @@
         ],
         "paths": {
             "@/*": ["./src/*"],
-            "@scripts/*": ["./scripts/*"]
+            "@scripts/*": ["./scripts/*"],
+            "@tests/*": ["./tests/*"]
         }
     },
     "include": [

@@ -5,8 +5,8 @@ These rules apply to `src/server/` in addition to the repository guidelines. Thi
 ## Boundaries
 
 - Keep each product domain under its owning server module.
-- Keep domain rules in `domain/`, use-case coordination in `services/`, and data access in `repositories/`.
-- A service may use a repository directly for a read-only projection when constructing a domain entity is unnecessary. State-changing operations must pass through the domain rules they affect.
+- Keep domain rules in `domain/`, use-case coordination in `application/`, and data access in `persistence/`.
+- An application service may use a repository directly for a read-only projection when constructing a domain entity is unnecessary. State-changing operations must pass through the domain rules they affect.
 - Keep shared server mechanics such as configuration, database access, errors, logging, and request context under `platform/`.
 - Keep provider-specific code behind explicit interfaces and do not let provider response shapes become domain types.
 - Do not import browser components, client state, or client configuration into server modules.
@@ -20,7 +20,7 @@ These rules apply to `src/server/` in addition to the repository guidelines. Thi
 
 ## Input, schemas, and errors
 
-- Validate untrusted values at the server boundary before passing them to services or repositories.
+- Validate untrusted values at the server boundary before passing them to application services or repositories.
 - Use runtime schemas at external boundaries and explicit domain types inside the domain.
 - Name transport schemas by entity and operation: `XxxCreate`, `XxxRead`, and `XxxUpdate`. Use a verb suffix only when one of those names does not express the contract.
 - Make intentional domain and application failures inherit from `TuringError`.
@@ -48,7 +48,7 @@ These rules apply to `src/server/` in addition to the repository guidelines. Thi
 - Allow inference for obvious local values. Add explicit types where they document a public contract or prevent widening.
 - Use `type` for unions and mapped types. Use `interface` for object contracts intended to be implemented or extended.
 - Organize imports as standard library, third-party packages, then application imports. Use relative imports within the same package and the `@` alias across application boundaries.
-- Add JSDoc to public services, utilities, classes, and methods. Include parameters, returns, and only meaningful errors that can escape.
+- Add JSDoc to public application services, utilities, classes, and methods. Include parameters, returns, and only meaningful errors that can escape.
 
 ## Tests
 

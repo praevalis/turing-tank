@@ -34,27 +34,10 @@ export type DatabaseConfig = {
 /**
  * Parses component database connection values for one active database user.
  *
- * @param env Environment values available to the server process.
+ * @param env Environment values available to the consuming process.
  * @returns Validated database configuration.
  * @throws {z.ZodError} If a database connection value is missing or invalid.
  */
 export function parseDatabaseConfig(env: Record<string, string | undefined>): DatabaseConfig {
     return databaseConfigSchema.parse(env);
-}
-
-/**
- * Loads and validates the active database connection from the process environment.
- *
- * @returns Validated database configuration.
- * @throws {z.ZodError} If a database connection value is missing or invalid.
- */
-export function getDatabaseConfig(): DatabaseConfig {
-    return parseDatabaseConfig({
-        DATABASE_HOST: process.env.DATABASE_HOST,
-        DATABASE_NAME: process.env.DATABASE_NAME,
-        DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-        DATABASE_PORT: process.env.DATABASE_PORT,
-        DATABASE_SSL: process.env.DATABASE_SSL,
-        DATABASE_USER: process.env.DATABASE_USER,
-    });
 }

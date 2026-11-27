@@ -3,11 +3,15 @@ import { z } from 'zod';
 import { parseDatabaseConfig, type DatabaseConfig } from './database';
 
 const serverConfigSchema = z.object({
+    AUTH_SESSION_DURATION_SECONDS: z.coerce.number().int().positive().default(2_592_000),
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
 });
 
 export type ServerConfig = z.infer<typeof serverConfigSchema> & DatabaseConfig;
+
+// Runtime configuration is a process-scoped singleton: validate it once and reuse the immutable value.
+let cachedServerConfig: ServerConfig | undefined;
 
 /**
  * Parses private server configuration values.
@@ -30,14 +34,19 @@ export function parseServerConfig(env: Record<string, string | undefined>): Serv
  * @throws {z.ZodError} If a supplied server configuration value is invalid.
  */
 export function getServerConfig(): ServerConfig {
-    return parseServerConfig({
-        DATABASE_HOST: process.env.DATABASE_HOST,
-        DATABASE_NAME: process.env.DATABASE_NAME,
-        DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-        DATABASE_PORT: process.env.DATABASE_PORT,
-        DATABASE_SSL: process.env.DATABASE_SSL,
-        DATABASE_USER: process.env.DATABASE_USER,
-        NODE_ENV: process.env.NODE_ENV,
-        LOG_LEVEL: process.env.LOG_LEVEL,
-    });
+    if (cachedServerConfig === undefined) {
+        cachedServerConfig = parseServerConfig({
+            AUTH_SESSION_DURATION_SECONDS: process.env.AUTH_SESSION_DURATION_SECONDS,
+            DATABASE_HOST: process.env.DATABASE_HOST,
+            DATABASE_NAME: process.env.DATABASE_NAME,
+            DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+            DATABASE_PORT: process.env.DATABASE_PORT,
+            DATABASE_SSL: process.env.DATABASE_SSL,
+            DATABASE_USER: process.env.DATABASE_USER,
+            LOG_LEVEL: process.env.LOG_LEVEL,
+            NODE_ENV: process.env.NODE_ENV,
+        });
+    }
+
+    return cachedServerConfig;
 }

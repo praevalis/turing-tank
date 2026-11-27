@@ -1,12 +1,12 @@
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { getDatabaseConfig } from '@/server/platform/config';
+import { getMigrationConfig } from '@/server/platform/config';
 
 import { migrateDatabase } from './migration-runner';
 
 async function main(): Promise<void> {
-    const { DATABASE_URL } = getDatabaseConfig();
+    const { DATABASE_URL } = getMigrationConfig();
     await migrateDatabase(DATABASE_URL);
 }
 
